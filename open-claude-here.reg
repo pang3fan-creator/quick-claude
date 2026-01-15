@@ -1,0 +1,17 @@
+Windows Registry Editor Version 5.00
+
+; 在文件夹空白处右键菜单添加 "Open Claude Here"
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenClaudeHere]
+@="Open Claude Here"
+"Icon"="C:\\Program Files\\Git\\git-bash.exe"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenClaudeHere\command]
+@="\"C:\\Program Files\\Git\\git-bash.exe\" --cd=\"%V\" -c \"claude --dangerously-skip-permissions\""
+
+; 在文件夹上右键菜单添加 "Open Claude Here"
+[HKEY_CLASSES_ROOT\Directory\shell\OpenClaudeHere]
+@="Open Claude Here"
+"Icon"="C:\\Program Files\\Git\\git-bash.exe"
+
+[HKEY_CLASSES_ROOT\Directory\shell\OpenClaudeHere\command]
+@="\"C:\\Program Files\\Git\\git-bash.exe\" --cd=\"%V\" -c \"claude --dangerously-skip-permissions\""

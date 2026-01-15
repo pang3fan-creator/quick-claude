@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+; 删除 "Open Claude Here" 右键菜单项
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\OpenClaudeHere]
+[-HKEY_CLASSES_ROOT\Directory\shell\OpenClaudeHere]

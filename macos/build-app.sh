@@ -31,4 +31,14 @@ echo "Found claude at: $CLAUDE_PATH"
 sed "s|__CLAUDE_PATH__|$CLAUDE_PATH|g" "$SOURCE_APPLESCRIPT" | \
 	osacompile -o "$OUTPUT_APP" -x -
 
+# ===== 3. Replace icon with Claude official icon =====
+CUSTOM_ICON="$SCRIPT_DIR/icons/claude.icns"
+if [[ -f "$CUSTOM_ICON" ]]; then
+	cp "$CUSTOM_ICON" "$OUTPUT_APP/Contents/Resources/applet.icns"
+	echo "Replaced icon: $CUSTOM_ICON"
+fi
+
+# ===== 4. Clean up Assets.car (not needed) =====
+rm -f "$OUTPUT_APP/Contents/Resources/Assets.car" 2>/dev/null || true
+
 echo "Built: $OUTPUT_APP"

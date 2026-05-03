@@ -27,9 +27,11 @@ fi
 
 echo "Found claude at: $CLAUDE_PATH"
 
-# ===== 2. Compile .app =====
-sed "s|__CLAUDE_PATH__|$CLAUDE_PATH|g" "$SOURCE_APPLESCRIPT" | \
-	osacompile -o "$OUTPUT_APP" -x -
+# ===== 2. Compile .app (use temp file for reliable dictionary loading) =====
+TEMP_SCRIPT=$(mktemp /tmp/open-claude-here.XXXXXX.applescript)
+sed "s|__CLAUDE_PATH__|$CLAUDE_PATH|g" "$SOURCE_APPLESCRIPT" > "$TEMP_SCRIPT"
+osacompile -o "$OUTPUT_APP" -x "$TEMP_SCRIPT"
+rm -f "$TEMP_SCRIPT"
 
 # ===== 3. Replace icon with Claude official icon =====
 CUSTOM_ICON="$SCRIPT_DIR/icons/claude.icns"

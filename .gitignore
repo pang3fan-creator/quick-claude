@@ -1,0 +1,8 @@
+# macOS metadata
+.DS_Store
+._*
+.AppleDouble
+.AppleDB
+
+# macOS app bundle artifacts (not the app itself)
+**/._*.scpt
